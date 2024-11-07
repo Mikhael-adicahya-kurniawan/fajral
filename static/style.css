@@ -94,17 +94,6 @@ span {
     transition: all 0.5s ease;
 }
 
-#registrationForm {
-    border: 1px solid #ccc;
-    padding: 20px;
-    margin-top: 20px;
-    background-color: #f9f9f9;
-}
-
-.hidden {
-    display: none;
-}
-
 .nav-btn:hover {
     background: var(--main-color);
     color: var(--text-color);
@@ -127,6 +116,7 @@ span {
     background-position: center;
     background-repeat: no-repeat;
     text-align: center;
+    padding: 20px; /* Kurangi padding */
 }
 
 .home-content h3 {
@@ -149,22 +139,35 @@ span {
     line-height: 1.3;
 }
 
+.home-img {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
 .home-img img {
-    width: 45vw;
+    width: 100vw; /* Lebar penuh viewport */
+    height: 100vh; /* Tinggi penuh viewport */
+    object-fit: cover; /* Menjaga proporsi gambar agar tidak terdistorsi */
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1; /* Menempatkan gambar di belakang */
+    opacity: 0.5;
 }
 
 .home-img::before {
     content: 'WORKOUT';
     position: absolute;
-    top: 20%;
-    left: 30%;
+    top: 25%;
+    left: 50%;
     transform: translateX(-50%);
     font-size: 10rem;
     font-weight: 100;
     line-height: 10rem;
     color: var(--text-color);
-    opacity: 0.1;
-    z-index: -1;
+    z-index: 1; /* Pastikan teks berada di atas gambar */
 }
 
 .home-content p {
@@ -184,6 +187,8 @@ span {
     letter-spacing: 0.1rem;
     font-weight: 600;
     transition: 0.5s ease;
+    position: relative;
+    z-index: 2; /* Pastikan tombol berada di atas gambar */
 }
 
 .btn:hover {
@@ -334,64 +339,157 @@ footer {
     }
 }
 
-.container {
-    max-width: 400px;
-    /* Membatasi lebar form */
-    margin: auto;
-    /* Mengatur agar form berada di tengah */
-    background: #fff;
-    /* Latar belakang putih untuk form */
-    padding: 20px;
-    /* Ruang di dalam form */
-    border-radius: 5px;
-    /* Sudut membulat */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    /* Bayangan untuk efek kedalaman */
+.wrapper {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 440px;
+    background: rgb(255, 255, 255);
+    border: 2px solid rgba(255, 255, 255, 5);
+    border-radius: 20px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
 }
 
-h2 {
-    text-align: center;
-    /* Membuat judul berada di tengah */
-}
-
-label {
-    display: block;
-    /* Mengatur label menjadi block agar setiap label berada di baris terpisah */
-    margin: 10px 0 5px;
-    /* Jarak di atas dan bawah label */
-}
-
-input {
+.wrapper .form-box {
     width: 100%;
-    /* Membuat input mengisi lebar form */
-    padding: 10px;
-    /* Ruang dalam input */
-    margin-bottom: 15px;
-    /* Jarak bawah input */
-    border: 1px solid #ccc;
-    /* Batas input */
-    border-radius: 3px;
-    /* Sudut input membulat */
+    padding: 40px;
 }
 
-button {
-    width: 100%;
-    /* Tombol mengisi lebar form */
-    padding: 10px;
-    /* Ruang dalam tombol */
-    background-color: #28a745;
-    /* Warna latar tombol */
-    color: #fff;
-    /* Warna teks tombol */
-    border: none;
-    /* Menghilangkan batas tombol */
-    border-radius: 3px;
-    /* Sudut tombol membulat */
+.wrapper .form-box.login {
+    display: none; 
+
+}
+
+.wrapper .form-box.register {
+    position: relative;
+    transform:translateX(0);
+}
+
+.wrapper .icon-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 45px;
+    height: 45px;
+    background: var(--main-color); 
+    font-size: 2rem;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    border-bottom-left-radius: 20px;
     cursor: pointer;
-    /* Menunjukkan bahwa tombol dapat diklik */
+    z-index: 1;
 }
 
-button:hover {
-    background-color: #218838;
-    /* Warna tombol saat di-hover */
+.form-box h2 {
+    font-size: 2rem;
+    color: #162938;
+    text-align: center;
+}
+
+.input-box {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    border-bottom: 2px solid #162938 ;
+    margin: 30px 0;
+}
+
+.input-box label {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    font-size: 1rem;
+    color: #162938;
+    font-weight: 500;
+    pointer-events: none;
+    transition: 0.5s;
+}
+
+.input-box input:focus~label,
+.input-box input:valid~label {
+    top: -5px;
+}
+
+.input-box input {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    color: #162938;
+    font-weight: 600;
+    padding: 0 35px 0 5px;
+}
+
+.input-box .icon {
+    position: absolute;
+    right: 8px;
+    font-size: 1.2rem;
+    color: #162938;
+    line-height: 57px;
+}
+
+.remember-forgot {
+    font-size: .9rem;
+    color: #162938;
+    font-weight: 500;
+    margin: -15px 0 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.remember-forgot label input {
+    accent-color: #162938;
+    margin-right: 3px;
+}
+
+.remember-forgot a {
+    color: #162938;
+    text-decoration: none;
+}
+
+.remember-forgot a:hover {
+    text-decoration: underline;
+}
+
+.bttn {
+    width: 100%;
+    height: 45px;
+    background: #162938;
+    border: none;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1remm;
+    color: #fff;
+    font-weight: 500;
+}
+
+.login-register {
+    font-size: .9rem;
+    color: #162816;
+    text-align: center;
+    font-weight: 500;
+    margin: 25px 0 10px;
+}
+
+.login-register p a {
+    color: #162938;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.login-register p a:hover {
+    text-decoration: underline;
 }
