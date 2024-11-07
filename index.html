@@ -5,8 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <link rel="stylesheet" href="static/style.css">
     <title>Workout Schedule</title>
 </head>
@@ -23,7 +25,7 @@
             <li><a href="#reviews">Review</a></li>
         </ul>
         <div class="top-btn">
-            
+
             <a href="login.html" class="nav-btn">login</a>
         </div>
     </header>
@@ -31,8 +33,8 @@
         <div class="home-content">
             <h3><span class="multiple-text">Body Building</span></h3>
             <p>TEST</p>
-            <button  class="btn" id="join-us-btn">
-                <a href="login.html">Join Us</a>
+            <button class="btn" id="join-us-btn">
+                <a href="login.html" class="nav-btn">Join Us</a>
             </button>
         </div>
         <div class="home-img">
@@ -69,7 +71,8 @@
                 <a href=""><i class="fa-brands fa-facebook"></i></a>
                 <a href="https://www.instagram.com/work.outschedule/"><i class="fa-brands fa-instagram"></i></a>
                 <a href=""><i class="fa-brands fa-whatsapp"></i></a>
-                <a href="https://www.youtube.com/channel/UCe0TLA0EsQbE-MjuHXevj2A"><i class="fa-brands fa-youtube"></i></a>
+                <a href="https://www.youtube.com/channel/UCe0TLA0EsQbE-MjuHXevj2A"><i
+                        class="fa-brands fa-youtube"></i></a>
             </div>
             <div class="footerNav">
                 <ul>
@@ -90,12 +93,56 @@
         <span class="icon-close" id="close-form">
             <ion-icon name="close-outline"></ion-icon>
         </span>
-        <div id="form-container"></div>
+        <div id="form-container">
+            <!-- Form Login -->
+            <div class="form-box login" style="display: none;">
+                <h2>Login</h2>
+                <form id="login-form">
+                    <div class="input-box">
+                        <span class="icon"><i class="fa fa-envelope"></i></span>
+                        <input type="email" required>
+                        <label>Email</label>
+                    </div>
+                    <div class="input-box">
+                        <span class="icon"><i class="fa fa-lock"></i></span>
+                        <input type="password" required>
+                        <label>Password</label>
+                    </div>
+                    <button type="submit" class="btn">Login</button>
+                    <p class="register-link">Don't have an account? <a href="#">Register</a></p>
+                </form>
+            </div>
+
+            <!-- Form Register -->
+            <div class="form-box register" style="display: none;">
+                <h2>Register</h2>
+                <form id="register-form">
+                    <div class="input-box">
+                        <span class="icon"><i class="fa fa-user"></i></span>
+                        <input type="text" required>
+                        <label>Username</label>
+                    </div>
+                    <div class="input-box">
+                        <span class="icon"><i class="fa fa-envelope"></i></span>
+                        <input type="email" required>
+                        <label>Email</label>
+                    </div>
+                    <div class="input-box">
+                        <span class="icon"><i class="fa fa-lock"></i></span>
+                        <input type="password" required>
+                        <label>Password</label>
+                    </div>
+                    <button type="submit" class="btn">Register</button>
+                    <p class="login-link">Already have an account? <a href="#">Login</a></p>
+                </form>
+            </div>
+        </div>
     </div>
+
 
     <script src="static/script.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script> 
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 
 </html>
